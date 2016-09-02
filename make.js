@@ -105,6 +105,16 @@ var MOCHA_OPTS = ' --timeout 15000 --slow 500';
     };
 
     //
+    // make appveyor
+    //
+    target.appveyor = function () {
+        target.lint();
+
+        // without functional tests
+        assertExec(MOCHA + MOCHA_OPTS + ' -i -g "functional" -R dot ./tests/');
+    };
+
+    //
     // make wp-plugin
     //
     target['wp-plugin'] = function () {
@@ -202,3 +212,5 @@ var MOCHA_OPTS = ' --timeout 15000 --slow 500';
         echo('  help        shows this help message');
     };
 })();
+
+// vim: ft=javascript sw=4 sts=4 et:
