@@ -90,6 +90,7 @@ function assertHeader(uri, header) {
     }
 }
 
+// bootswatch
 describe('functional', function () {
     describe('bootstrap', function () {
         config.bootstrap.forEach(function (self) {
@@ -214,7 +215,7 @@ describe('functional', function () {
         var publicURIs = [];
 
         walk.filesSync(path.join(__dirname, '..', 'public'), function (base, name) {
-            var root = base.split(path.normalize('/public/'))[1];
+            var root = base.split('/public/')[1];
 
             // ensure file is in whitelisted directory
             if (typeof root === 'undefined' || whitelist.indexOf(root.split(path.sep)[0]) === -1) {
@@ -222,7 +223,7 @@ describe('functional', function () {
             }
 
             var domain = helpers.domainCheck('https://maxcdn.bootstrapcdn.com/');
-            var uri = helpers.normalizeURL(domain + root + '/' + name);
+            var uri = domain + root + '/' + name;
             var ext = helpers.extension(name);
 
             // ignore unknown / unsupported types

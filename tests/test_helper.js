@@ -171,13 +171,6 @@ function domainCheck(uri) {
     return uri.replace('https://maxcdn.bootstrapcdn.com/', process.env.TEST_S3);
 }
 
-function normalizeURL(url) {
-    if (/win/.test(process.platform)) {
-        url = url.replace(/\\/g, '/');
-    }
-    return url;
-}
-
 module.exports = {
     config: config,
     app: app,
@@ -200,6 +193,5 @@ module.exports = {
         haml: jsHAML
     },
     CONTENT_TYPE_MAP: CONTENT_TYPE_MAP,
-    domainCheck: domainCheck,
-    normalizeURL: normalizeURL
+    domainCheck: domainCheck
 };
